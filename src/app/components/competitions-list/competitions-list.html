@@ -1,0 +1,42 @@
+<div class="events">
+  <ng-container *ngIf="(status | async) as s">
+    <div class="status" *ngIf="s === 'loading'">Loading events...</div>
+    <div class="status error" *ngIf="s === 'error'">Error loading events. Please try again later.</div>
+
+    <ul class="events-list" *ngIf="s === 'loaded' || s === 'init'">
+      <li class="events-list__item" *ngFor="let event of (events | async);">
+        <article class="event-card" role="article" aria-label="{{ event.name }}">
+          <div class="card-media">
+            <!-- <img *ngIf="event.imageUrl; else placeholder" [src]="event.imageUrl" [alt]="event.name" class="event-image" /> -->
+            <ng-template #placeholder>
+              <div class="event-image placeholder">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14" stroke="#e6e6e6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="3" y="8" width="18" height="10" rx="2" fill="#f5f5f5"/>
+                </svg>
+              </div>
+            </ng-template>
+            <span class="badge">{{ event.location }}</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="event-title">{{ event.name }}</h3>
+            <div class="meta">
+              <time class="event-date">{{ event.date | date: 'mediumDate' }}</time>
+              <span class="pill">{{ (event.maxParticipants ? event.maxParticipants : 0) - (event.participants.length || 0) }} spots</span>
+            </div>
+            <p class="event-description" [title]="event.description">{{ event.description }}</p>
+          </div>
+
+          <div class="card-footer">
+            <div class="participants">
+              <span class="dot" *ngIf="event.participants?.length"></span>
+              <span class="count">{{ event.participants.length || 0 }}</span>
+            </div>
+            <button class="btn-details" (click)="goToEventDetails(event.id)" *ngIf="event.id">Details</button>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </ng-container>
+</div>

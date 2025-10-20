@@ -1,0 +1,23 @@
+.container {
+  width: 95%;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+
+  .tab-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgb(63, 63, 63);
+
+    .tab-bar__item {
+      border-radius: 0;
+      color: white;
+      background-color: #474747;
+    }
+
+    .active-btn {
+      background: var(--mat-sys-primary);
+    }
+  }
+}

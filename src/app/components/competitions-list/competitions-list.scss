@@ -1,0 +1,180 @@
+// ...existing code...
+.events {
+  padding: 1.5rem;
+
+  .status {
+    text-align: center;
+    color: #555;
+    padding: 1rem 0;
+    &.error { color: #c0392b; }
+  }
+
+  .events-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .events-list__item {
+    display: block;
+  }
+
+  .event-card {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+    overflow: hidden;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    min-height: 360px;
+    border: 1px solid rgba(16, 24, 40, 0.04);
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(16, 24, 40, 0.12);
+    }
+
+    .card-media {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(90deg, #f0f3ff, #f8fbff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      .event-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .placeholder {
+        width: 100%;
+        height: 100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background: linear-gradient(90deg,#f6f7fa,#eef2ff);
+      }
+
+      .badge {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        background: rgba(255,255,255,0.9);
+        color: #1f2937;
+        font-weight: 600;
+        font-size: 0.8rem;
+        padding: 6px 10px;
+        border-radius: 999px;
+        box-shadow: 0 2px 6px rgba(16,24,40,0.06);
+      }
+    }
+
+    .card-body {
+      padding: 1rem 1.1rem;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+
+      .event-title {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.05rem;
+        color: #0f172a;
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      .meta {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        margin-bottom: 0.6rem;
+        color: #6b7280;
+
+        .event-date {
+          font-size: 0.9rem;
+        }
+
+        .pill {
+          background: #eef2ff;
+          color: #4338ca;
+          font-weight: 600;
+          font-size: 0.75rem;
+          padding: 4px 8px;
+          border-radius: 999px;
+        }
+      }
+
+      .event-description {
+        margin: 0;
+        color: #475569;
+        font-size: 0.92rem;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1rem;
+      border-top: 1px solid rgba(16,24,40,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+
+      .participants {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #374151;
+        font-weight: 600;
+
+        .dot {
+          width: 8px;
+          height: 8px;
+          background: #10b981;
+          border-radius: 50%;
+          box-shadow: 0 0 6px rgba(16, 185, 129, 0.15);
+        }
+
+        .count { font-size: 0.95rem; color: #111827; }
+      }
+
+      .btn-details {
+        background: linear-gradient(90deg, #4f46e5, #06b6d4);
+        color: #fff;
+        padding: 0.5rem 0.9rem;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 6px 14px rgba(79,70,229,0.12);
+        transition: transform 140ms ease, box-shadow 140ms ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 26px rgba(79,70,229,0.16);
+        }
+      }
+    }
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  .event-card {
+    min-height: 320px;
+    .card-media { height: 140px; }
+  }
+}

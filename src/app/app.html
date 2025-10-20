@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-toolbar class="tab-bar">
+    <button
+      mat-button
+      routerLink="/events"
+      routerLinkActive="active-btn"
+      class="tab-bar__item"
+    >
+      Список соревнований
+    </button>
+
+    <button
+      mat-button
+      routerLink="/create-event"
+      routerLinkActive="active-btn"
+      class="tab-bar__item"
+    >
+      Создать соревнование
+    </button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>
