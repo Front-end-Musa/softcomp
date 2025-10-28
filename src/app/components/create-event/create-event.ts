@@ -19,6 +19,7 @@ export class CreateEvent {
       location: ['City', Validators.required],
       createdBy: ['User'],
       maxParticipants: [100],
+      status: ['open', Validators.required],
       // imageUrl: [''],
       // link: ['']
     });
@@ -35,7 +36,8 @@ export class CreateEvent {
         createdBy: this.eventForm.value.createdBy.toString(),
         maxParticipants: this.eventForm.value.maxParticipants,
         createdAt: new Date().toString(),
-        participants: []
+        participants: [],
+        status: this.eventForm.value.status.toString() as 'open' | 'closed',
       };
       this.eventsFacade.addEvent(event);
       console.log('Event Created:', event);

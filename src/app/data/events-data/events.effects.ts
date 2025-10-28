@@ -5,6 +5,9 @@ import {
   addEvent,
   addEventFailure,
   addEventSuccess,
+  loadEventById,
+  loadEventByIdFailure,
+  loadEventByIdSuccess,
   loadEvents,
   loadEventsFailure,
   loadEventsSuccess,
@@ -35,6 +38,18 @@ export class EventsEffects {
         this.apiService$.addEvent(action.event).pipe(
           map((result) => addEventSuccess({ result })),
           catchError((error) => of(addEventFailure({ error })))
+        )
+      )
+    )
+  );
+
+  loadEventById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadEventById),
+      mergeMap((action) =>
+        this.apiService$.getEventById(action.id).pipe(
+          map((event) => loadEventByIdSuccess({ event })),
+          catchError((error) => of(loadEventByIdFailure({ error })))
         )
       )
     )

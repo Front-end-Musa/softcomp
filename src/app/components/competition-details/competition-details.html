@@ -1,1 +1,13 @@
-<p>competition-details works!</p>
+<div class="competition-details">
+  <p>Competition Details</p>
+  <div class="event-info" *ngIf="eventData != null; else loading">
+    <h2>{{ eventData.name }}</h2>
+    <p><strong>Date:</strong> {{ eventData.date }}</p>
+    <p><strong>Location:</strong> {{ eventData.location }}</p>
+    <p><strong>Description:</strong> {{ eventData.description }}</p>
+  </div>
+  <button class="register-button" (click)="register()" [disabled]="!eventData">Register</button>
+  <ng-template #loading>
+    <p>Loading event details...</p>
+  </ng-template>
+</div>

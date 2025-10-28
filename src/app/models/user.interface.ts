@@ -1,7 +1,10 @@
 export interface User {
-  id: string;
+  id?: string;
   email: string;
-  displayName: string;
-  role: 'wrestler' | 'competitionCreator';
+  firstName: string;
+  lastName: string;
+  password: string;
+  pfpUrl?: string;
+  role: 'wrestler' | 'organizer';
   createdAt: Date;
 }

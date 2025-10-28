@@ -26,7 +26,6 @@ body {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: rgb(63, 63, 63);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 
@@ -40,6 +39,7 @@ body, * {
 
 button {
     border: none;
+    background: #2563eb;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

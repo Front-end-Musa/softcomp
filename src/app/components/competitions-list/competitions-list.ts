@@ -4,17 +4,30 @@ import { CompEvent } from '../../models/event.interface';
 import { Observable, Subscription } from 'rxjs';
 import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-competitions-list',
-  imports: [AsyncPipe, DatePipe, CommonModule, RouterModule,  ],
+  imports: [
+    AsyncPipe,
+    DatePipe,
+    CommonModule,
+    RouterModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './competitions-list.html',
   styleUrl: './competitions-list.scss',
 })
 export class CompetitionsList implements OnInit {
   events!: Observable<CompEvent[]>;
   status!: Observable<string>;
-  constructor(private eventsFacade: EventsFacade, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private eventsFacade: EventsFacade,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.eventsFacade.loadEvents();
@@ -38,7 +51,7 @@ export class CompetitionsList implements OnInit {
         this.router.navigate(['/events/edit', event.id]);
         break;
       case 'delete':
-        // Add delete logic here 
+        // Add delete logic here
         break;
     }
   }

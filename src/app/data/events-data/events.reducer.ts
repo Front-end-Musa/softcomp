@@ -1,7 +1,7 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { CompEvent } from '../../models/event.interface';
 import { createReducer, on } from '@ngrx/store';
-import { loadEvents, loadEventsFailure, loadEventsSuccess } from './events.actions';
+import { loadEventByIdFailure, loadEventByIdSuccess, loadEvents, loadEventsFailure, loadEventsSuccess } from './events.actions';
 
 export interface EventsState extends EntityState<CompEvent> {
   status: 'init' | 'loading' | 'loaded' | 'error' | string;
@@ -30,6 +30,26 @@ export const eventsReducer = createReducer(
     })
   ),
   on(loadEventsFailure, (state, { error }) => ({
+    ...state,
+    status: 'error',
+    error: error,
+  })),
+
+  on(loadEventByIdSuccess, (state, { event }) => {
+    if (event) {
+      return eventsAdapter.setOne(event, {
+        ...state,
+        status: 'loaded'
+      });
+    } else {
+      return {
+        ...state,
+        status: 'error',
+        error: 'Event not found'
+      };
+    }
+  }),
+  on(loadEventByIdFailure, (state, { error }) => ({
     ...state,
     status: 'error',
     error: error,

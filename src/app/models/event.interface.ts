@@ -8,4 +8,5 @@ export interface CompEvent {
   participants: string[];
   maxParticipants: number;
   createdAt: string;
+  status: 'open' | 'closed';
 }

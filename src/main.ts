@@ -33,6 +33,10 @@ bootstrapApplication(App, {
       events: eventsReducer,
       users: usersReducer,
     }),
+    provideStore({
+      users: usersReducer,
+      events: eventsReducer,
+    }),
     provideStoreDevtools({ maxAge: 25, logOnly: environment.production }),
   ],
 }).catch((err) => console.error(err));

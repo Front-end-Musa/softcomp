@@ -11,3 +11,6 @@ export const {
 } = eventsAdapter.getSelectors(selectEventsState);
 
 export const selectEventsStatus = createSelector(selectEventsState, (state) => state.status);
+
+export const selectEventById = (id: string) =>
+  createSelector(selectEventsEntities, (entities) => entities[id] || null);

@@ -23,3 +23,16 @@ export const addEventFailure = createAction(
   '[Events/API] Add Event Failure',
   props<{ error: any }>()
 );
+
+export const loadEventById = createAction(
+  '[Events/API] Load Event By Id',
+  props<{ id: string }>()
+);
+export const loadEventByIdSuccess = createAction(
+  '[Events/API] Load Event By Id Success',
+  props<{ event: CompEvent | null }>()
+);
+export const loadEventByIdFailure = createAction(
+  '[Events/API] Load Event By Id Failure',
+  props<{ error: any }>()
+);
